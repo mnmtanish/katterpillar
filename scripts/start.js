@@ -23,19 +23,28 @@ $(function () {
   function setUiSizesPortrait () {
     var mainHeight = window.innerHeight - 134;
     var levelMargin = (mainHeight - window.innerWidth)/2;
+    $('#main-wrapper').attr('style', '');
+    $('#game-level').attr('style', '');
+    $('#game-editor').attr('style', '');
     $('#main-wrapper').css('height', Math.round(mainHeight));
+    $('#main-wrapper').css('margin-top', Math.round(67));
     $('#game-editor').css('height', Math.round(mainHeight));
-    $('#game-level').css('margin-top', Math.round(levelMargin));
+    $('#game-editor').css('width', '100%');
+    $('#game-level').css('padding-top', Math.floor(levelMargin));
+    $('#game-level').css('width', '100%');
   }
 
   function setUiSizesLandscape() {
     var mainHeight = window.innerHeight - 67;
     var editorWidth = window.innerWidth - mainHeight - 20;
+    $('#main-wrapper').attr('style', '');
+    $('#game-level').attr('style', '');
+    $('#game-editor').attr('style', '');
     $('#main-wrapper').css('height', Math.round(mainHeight));
     $('#game-level').css('width', Math.round(mainHeight));
+    $('#game-level').css('margin-top', 0);
     $('#game-editor').css('height', Math.round(mainHeight));
     $('#game-editor').css('width', Math.round(editorWidth));
-    // body...
   }
 
   function setupLinks () {

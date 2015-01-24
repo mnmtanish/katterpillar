@@ -1,14 +1,13 @@
 body {
   font: 500 14px/21px 'Helvetica Neue', Helvetica, Arials;
   margin: 0;
-  padding: 67px 0;
 }
 
 .navigation {
   display: block;
   padding: 20px 0;
   text-align: center;
-  position: fixed;
+  position: absolute;
   width: 100%;
   background: #fff;
   z-index: 10;
@@ -93,7 +92,6 @@ body {
   .container,
   .container.active {
     display: inline-block;
-    max-width: 100%;
     height: 100%;
   }
 
