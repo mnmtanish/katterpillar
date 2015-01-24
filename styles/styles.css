@@ -1,0 +1,83 @@
+body {
+  font: 500 14px/21px 'Helvetica Neue', Helvetica, Arials;
+  padding: 40px;
+}
+
+.navigation {
+  display: block;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.navigation a {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 24px;
+  text-decoration: none;
+  background: #fafafa;
+  color: #aaa;
+  border: solid 1px #ccc;
+  border-radius: 13px;
+  font-weight: normal;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.navigation a.nav-circle {
+  padding: 6px 9px;
+}
+
+.navigation a:hover {
+  color: #555;
+  border: solid 1px #888;
+}
+
+.navigation a:active {
+  color: #555;
+  border: solid 1px #888;
+}
+
+.container {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+}
+
+.container:target {
+  display: block;
+}
+
+#level {
+  width: 100%;
+  height: 100%;
+}
+
+#editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: solid 1px #ccc;
+}
+
+/* DESKTOPS */
+
+@media (min-width: 900px) {
+  .navigation {
+    display: none;
+  }
+
+  .wrapper {
+    text-align: center;
+  }
+
+  .container,
+  .container:target {
+    margin: 0 20px;
+    display: inline-block;
+  }
+}
