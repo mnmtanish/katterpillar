@@ -6,19 +6,16 @@ function Level (params) {
   this._wallDots = [];
   this._fruitDots = [];
   this._snakeDots = [];
+  this._snakeDirection = {x: 1, y: 0};
 }
 
 
 Level.prototype._styles = {
-  bg: {fill: '#fafafa', stroke: '#ccc', strokeWidth: 4, radius: 0.4},
+  bg: {fill: '#FCFCFC', stroke: '#EEEEEE', strokeWidth: 4, radius: 0.3},
   wall: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
-  snake: {fill: '#1E88E5', stroke: '#0D47A1', strokeWidth: 8, radius: 0.7},
-  fruit: [
-    // {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 4, radius: 0.5},
-    // {fill: '#FFAB40', stroke: '#E65100', strokeWidth: 4, radius: 0.5},
-    // {fill: '#FFFF00', stroke: '#F57F17', strokeWidth: 4, radius: 0.5},
-    {fill: '#FF5252', stroke: '#B71C1C', strokeWidth: 4, radius: 0.5},
-  ],
+  snake: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 8, radius: 0.6},
+  head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 8, radius: 0.6},
+  fruit: {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 4, radius: 0.5},
 };
 
 
@@ -29,6 +26,55 @@ Level.prototype.setup = function(element) {
   this._createWalls();
   this._createFruits();
   this._createSnake();
+  this._setInitialDirection();
+};
+
+
+Level.prototype.tick = function(callback) {
+  var walls = this._wallDots;
+  var fruits = this._fruitDots;
+  var dots = this._snakeDots;
+  var head = dots[dots.length - 1];
+  var done = false;
+  var delay = 300;
+  var i;
+
+  for(i=0; i<dots.length - 1; ++i) {
+    dots[i].pos = dots[i+1].pos;
+  }
+
+  head.pos = {
+    x: head.pos.x + this._snakeDirection.x * this._gridSize,
+    y: head.pos.y + this._snakeDirection.y * this._gridSize,
+  };
+
+  for(i=0; i<walls.length; ++i) {
+    var wall = walls[i];
+    done = head.pos.x === wall.pos.x && head.pos.y === wall.pos.y;
+    if(done) {
+      alert('Ooops!');
+      return;
+    }
+  }
+
+  for(i=0; i<fruits.length; ++i) {
+    var fruit = fruits[i];
+    done = head.pos.x === fruit.pos.x && head.pos.y === fruit.pos.y;
+  }
+
+  for(i=0; i<dots.length; ++i) {
+    var circle = dots[i];
+    var pos = dots[i].pos;
+    circle.animate({cx: pos.x, cy: pos.y}, 200, mina.linear);
+  }
+
+  if(done) {
+    setTimeout(function () {
+      alert('Congratulations!');
+    }, delay);
+  } else {
+    setTimeout(callback, delay);
+  }
 };
 
 
@@ -63,7 +109,7 @@ Level.prototype._createWalls = function() {
 
   for(var i=0; i<coords.length; ++i) {
     var pos = this._toPosition(coords[i].x, coords[i].y);
-    circle = svg.circle(pos.x, pos.y, radius);
+    var circle = svg.circle(pos.x, pos.y, radius);
     circle.attr(styles);
     circle.pos = pos;
     this._wallDots.push(circle);
@@ -73,14 +119,13 @@ Level.prototype._createWalls = function() {
 
 Level.prototype._createFruits = function() {
   var svg = this._mapSvg;
-  var random = Math.floor(Math.random() * this._styles.fruit.length);
-  var styles = this._styles.fruit[random];
+  var styles = this._styles.fruit;
   var radius = this._toRadius(styles);
   var coords = this.params.fruits;
 
   for(var i=0; i<coords.length; ++i) {
     var pos = this._toPosition(coords[i].x, coords[i].y);
-    circle = svg.circle(pos.x, pos.y, radius);
+    var circle = svg.circle(pos.x, pos.y, radius);
     circle.attr(styles);
     circle.pos = pos;
     this._fruitDots.push(circle);
@@ -90,17 +135,36 @@ Level.prototype._createFruits = function() {
 
 Level.prototype._createSnake = function() {
   var svg = this._mapSvg;
-  var styles = this._styles.snake;
-  var radius = this._toRadius(styles);
+  var bodyStyles = this._styles.snake;
+  var headStyles = this._styles.head;
   var coords = this.params.snake;
 
   for(var i=0; i<coords.length; ++i) {
     var pos = this._toPosition(coords[i].x, coords[i].y);
-    circle = svg.circle(pos.x, pos.y, radius);
+    var styles = bodyStyles;
+    var radius = this._toRadius(styles);
+
+    if(i === coords.length - 1) {
+      styles = headStyles;
+      radius = this._toRadius(styles);
+    }
+
+    var circle = svg.circle(pos.x, pos.y, radius);
     circle.attr(styles);
     circle.pos = pos;
     this._snakeDots.push(circle);
   }
+};
+
+
+Level.prototype._setInitialDirection = function() {
+  var coords = this.params.snake;
+  var neck = coords[coords.length - 2];
+  var head = coords[coords.length - 1];
+  this._snakeDirection = {
+    x: head.x - neck.x,
+    y: head.y - neck.y,
+  };
 };
 
 
