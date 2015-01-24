@@ -1,12 +1,29 @@
 body {
   font: 500 14px/21px 'Helvetica Neue', Helvetica, Arials;
-  padding: 40px;
+  margin: 0;
+  padding: 67px 0;
 }
 
 .navigation {
   display: block;
-  margin: 20px 0;
+  padding: 20px 0;
   text-align: center;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 10;
+}
+
+.navigation.topnav {
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.navigation.bottomnav {
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #eee;
 }
 
 .navigation a {
@@ -41,12 +58,10 @@ body {
 .container {
   display: none;
   position: relative;
-  margin: 0 auto;
-  width: 400px;
-  height: 400px;
+  width: 100%;
 }
 
-.container:target {
+.container.active {
   display: block;
 }
 
@@ -61,23 +76,38 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  border: solid 1px #ccc;
 }
 
 /* DESKTOPS */
 
-@media (min-width: 900px) {
-  .navigation {
+
+@media (min-width: 600px) {
+  .navigation.bottomnav {
     display: none;
   }
 
-  .wrapper {
-    text-align: center;
+  body {
+    padding: 67px 0 0 0;
   }
 
   .container,
-  .container:target {
-    margin: 0 20px;
+  .container.active {
     display: inline-block;
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .container+.container {
+    margin-left: 10px;
+  }
+
+  #editor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #eee;
   }
 }
+

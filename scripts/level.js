@@ -12,8 +12,13 @@ function Level (params) {
 Level.prototype._styles = {
   bg: {fill: '#fafafa', stroke: '#ccc', strokeWidth: 4, radius: 0.4},
   wall: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
-  snake: {fill: '#90A4AE', stroke: '#263238', strokeWidth: 8, radius: 0.7},
-  fruit: {fill: '#A5D6A7', stroke: '#1B5E20', strokeWidth: 4, radius: 0.5},
+  snake: {fill: '#1E88E5', stroke: '#0D47A1', strokeWidth: 8, radius: 0.7},
+  fruit: [
+    // {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 4, radius: 0.5},
+    // {fill: '#FFAB40', stroke: '#E65100', strokeWidth: 4, radius: 0.5},
+    // {fill: '#FFFF00', stroke: '#F57F17', strokeWidth: 4, radius: 0.5},
+    {fill: '#FF5252', stroke: '#B71C1C', strokeWidth: 4, radius: 0.5},
+  ],
 };
 
 
@@ -68,7 +73,8 @@ Level.prototype._createWalls = function() {
 
 Level.prototype._createFruits = function() {
   var svg = this._mapSvg;
-  var styles = this._styles.fruit;
+  var random = Math.floor(Math.random() * this._styles.fruit.length);
+  var styles = this._styles.fruit[random];
   var radius = this._toRadius(styles);
   var coords = this.params.fruits;
 
