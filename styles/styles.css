@@ -1,47 +1,43 @@
 body {
-  font: 500 14px/21px 'Helvetica Neue', Helvetica, Arials;
+  font: 14px 'Helvetica Neue', Helvetica, Arials;
   margin: 0;
 }
 
 .navigation {
   display: block;
-  padding: 20px 0;
+  padding: 20px;
   text-align: center;
   position: absolute;
   width: 100%;
   background: #fff;
   z-index: 10;
-}
-
-.navigation.topnav {
   top: 0;
   left: 0;
   border-bottom: 1px solid #eee;
-}
-
-.navigation.bottomnav {
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid #eee;
+  color: #aaa;
+  box-sizing: border-box;
 }
 
 .navigation a {
   display: inline-block;
   margin: 0;
-  padding: 6px 24px;
+  padding: 6px 12px;
   text-decoration: none;
   background: #fafafa;
   color: #aaa;
   border: solid 1px #ccc;
   border-radius: 13px;
-  font-weight: normal;
   font-size: 12px;
   text-transform: uppercase;
   line-height: 1;
 }
 
-.navigation a.nav-circle {
-  padding: 6px 9px;
+.navigation a.left {
+  float: left;
+}
+
+.navigation a.right {
+  float: right;
 }
 
 .navigation a:hover {
@@ -49,63 +45,121 @@ body {
   border: solid 1px #888;
 }
 
-.navigation a:active {
+.navigation a.active {
   color: #555;
   border: solid 1px #888;
+}
+
+#main-wrapper {
+  margin-top: 67px;
 }
 
 .container {
   display: none;
   position: relative;
-  width: 100%;
+  margin: 0 auto;
 }
 
 .container.active {
   display: block;
 }
 
-#level {
-  width: 100%;
-  height: 100%;
+#game-intro {
+  width: 90%;
+  padding-top: 20px;
+  margin: 0 auto;
 }
 
-#editor {
+#game-levels {
+  width: 90%;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+#game-levels h1 {
+
+}
+
+#game-rules {
+  width: 90%;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+.rule {
+  position: relative;
+  background: rgba(0, 0, 0, 0.01);
+  padding: 12px 36px 12px 24px;
+  border-radius: 24px;
+  border: solid 1px #ccc;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.remove-rule {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.remove-rule {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  right: 18px;
+  top: 14px;
+}
+
+.add-rule {
+  display: block;
+  margin-top: 20px;
+  padding: 6px 9px;
+  background: rgba(0, 0, 0, 0.02);
+  border: solid 1px #aaa;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 11px;
+  color: #888;
+  width: 100px;
+  text-transform: uppercase;
+}
+
+.rule+.rule {
+  margin-top: 20px;
+}
+
+.rule pre {
+  margin: 0;
+  line-height: 1.3;
+  color: #888;
+}
+
+.rule pre span {
+  color: #B71C1C;
+  border-bottom: dotted 1px #B71C1C;
+}
+
+.rule pre span:focus {
+  outline: none;
+}
+
+pre+.children {
+  margin-top: 20px;
+}
+
+.shortcuts {
+  position: fixed;
   bottom: 0;
+  left: 0;
+  padding: 20px;
+  border-top: solid 1px #ccc;
+  width: 100%;
 }
 
-/* DESKTOPS */
-
-
-@media (min-width: 600px) {
-  .navigation.bottomnav {
-    display: none;
-  }
-
-  body {
-    padding: 67px 0 0 0;
-  }
-
-  .container,
-  .container.active {
-    display: inline-block;
-    height: 100%;
-  }
-
-  .container+.container {
-    margin-left: 10px;
-  }
-
-  #editor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid #eee;
-  }
+.shortcuts a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 11px;
+  display: inline-block;
+  padding: 3px 12px;
+  background: #eee;
+  border: 1px solid #ccc;
 }
-
