@@ -1,0 +1,23 @@
+{
+  "name": "ss15-demigeeks",
+  "version": "1.0.0",
+  "description": "Snake game for static showdown hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Hello World"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/staticshowdown/ss15-demigeeks.git"
+  },
+  "keywords": [
+    "static",
+    "showdown"
+  ],
+  "author": "Thanish <mnmtanish@gmail.com> (http://thanish.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/staticshowdown/ss15-demigeeks/issues"
+  },
+  "homepage": "https://github.com/staticshowdown/ss15-demigeeks"
+}
