@@ -13,8 +13,8 @@ function Level (params) {
 Level.prototype._styles = {
   bg: {fill: '#FCFCFC', stroke: '#EEEEEE', strokeWidth: 4, radius: 0.3},
   wall: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
-  snake: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 8, radius: 0.6},
-  head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 8, radius: 0.6},
+  snake: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 8, radius: 0.9},
+  head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 8, radius: 0.9},
   fruit: {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 4, radius: 0.5},
 };
 
@@ -109,10 +109,11 @@ Level.prototype._createWalls = function() {
 
   for(var i=0; i<coords.length; ++i) {
     var pos = this._toPosition(coords[i].x, coords[i].y);
-    var circle = svg.circle(pos.x, pos.y, radius);
-    circle.attr(styles);
-    circle.pos = pos;
-    this._wallDots.push(circle);
+    var rect = svg.rect(pos.x - radius, pos.y - radius, radius*2, radius*2);
+    rect.transform('rotate(45, '+pos.x+', '+pos.y+')');
+    rect.attr(styles);
+    rect.pos = pos;
+    this._wallDots.push(rect);
   }
 };
 

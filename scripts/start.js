@@ -16,8 +16,6 @@ $(function () {
     } else {
       setUiSizesLandscape();
     }
-
-    loadEditor();
   }
 
   function setUiSizesPortrait () {
