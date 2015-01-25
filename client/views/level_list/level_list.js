@@ -1,6 +1,6 @@
 Template.level_list.helpers({
   levels: function () {
-    return Levels.find();
+    return Levels.find({}, {sort: {order: 1}});
   }
 });
 
