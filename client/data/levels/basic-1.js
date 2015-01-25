@@ -53,6 +53,8 @@ Levels.insert({
     {x: 1, y: 4},
   ],
   intro: [
-    '# Basics 1'
+    '# Basics 1',
+    '',
+    'Try to finish this with as few commands as possible.'
   ].join('\n')
 });
