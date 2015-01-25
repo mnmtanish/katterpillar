@@ -68,6 +68,8 @@ LevelClass.prototype.tick = function(callback) {
   var gSize = this._gridSize;
   var i;
 
+  var posForNewDot = dots[0].pos;
+
   if(this._caterpillarDirection.x || this._caterpillarDirection.y) {
     for(i=0; i<dots.length - 1; ++i) {
       dots[i].pos = dots[i+1].pos;
@@ -109,6 +111,14 @@ LevelClass.prototype.tick = function(callback) {
     if(head.pos.x === fruit.pos.x && head.pos.y === fruit.pos.y) {
       fruit.consumed = true;
       fruit.attr('display', 'none');
+
+      var svg = this._mapSvg;
+      var bodyStyles = this._styles.caterpillar;
+      var radius = this._toRadius(bodyStyles);
+      circle = svg.circle(posForNewDot.x, posForNewDot.y, radius);
+      circle.attr(bodyStyles);
+      circle.pos = posForNewDot;
+      this._caterpillarDots.push(circle);
     }
 
     done = done && fruit.consumed;
@@ -211,16 +221,23 @@ LevelClass.prototype._createCaterpillar = function() {
     var pos = this._toPosition(coords[i].x, coords[i].y);
     var styles = bodyStyles;
     var radius = this._toRadius(styles);
+    var circle = null;
 
     if(i === coords.length - 1) {
       styles = headStyles;
       radius = this._toRadius(styles);
-    }
 
-    var circle = svg.circle(pos.x, pos.y, radius);
-    circle.attr(styles);
-    circle.pos = pos;
-    this._caterpillarDots.push(circle);
+      circle = svg.circle(pos.x, pos.y, radius);
+      circle.attr(styles);
+      circle.pos = pos;
+
+      this._caterpillarDots.push(circle);
+    } else {
+      circle = svg.circle(pos.x, pos.y, radius);
+      circle.attr(styles);
+      circle.pos = pos;
+      this._caterpillarDots.push(circle);
+    }
   }
 };
 
