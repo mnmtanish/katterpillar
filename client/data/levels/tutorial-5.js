@@ -18,6 +18,6 @@ Levels.insert({
   intro: [
     '# Tutorial Level 5',
     '',
-    'Some levels have more fruits, you\'ll have to collect them all.',
+    'Some levels have more fruits, you\'ll have to collect them all to complete the level. And, try to get them fast.',
   ].join('\n')
 });
