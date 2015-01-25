@@ -1,6 +1,11 @@
 .home-logo {
   font-size: 50px;
   margin: 50px 0;
+  line-height: 0.75;
+}
+
+.home-logo small {
+  font-size: 20px;
 }
 
 .home-links a {
