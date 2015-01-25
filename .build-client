@@ -7,6 +7,8 @@ meteor build --directory .build
 rm -rf .client/bundle.js
 rm -rf .client/styles.css
 rm -rf .client/assets
+rm -rf .client/packages
 cp .build/bundle/programs/web.browser/*.js .client/bundle.js
 cp .build/bundle/programs/web.browser/*.css .client/styles.css
+cp -r .build/bundle/programs/web.browser/packages .client/
 cp -r public/* .client/
