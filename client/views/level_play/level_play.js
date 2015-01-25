@@ -158,16 +158,17 @@ function showLoseMessage (reason) {
 
 function showTimeoutMessage () {
   swal({
-    title: 'Program Timeout',
-    text: 'The program is taking so much time. Remember, time is counted for both program logic and movements. Try to optimize the program a bit.',
-    type: 'warning'
+    title: 'Taking so much time',
+    text: 'Try to complete the level with fewer steps.',
+    type: 'warning',
   });
 }
 
 function showNoRules () {
   swal({
-    title: 'No Rules Defined',
-    text: 'Please add some rules to control the snake',
-    type: 'warning'
+    title: 'Nothing to do!',
+    text: 'Please give it some commands.',
+    type: 'warning',
+    timer: 1500,
   });
 }
