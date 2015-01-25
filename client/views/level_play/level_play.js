@@ -1,13 +1,14 @@
 Template.level_play.created = function () {
   this.counter = 0;
   this.counterDep = new Tracker.Dependency();
+  this.levelDep = new Tracker.Dependency();
 };
 
 
 Template.level_play.rendered = function () {
   var self = this;
-  var level = Session.get('level');
-  var rules = Session.get('rules');
+  var level = CurrentLevel.get();
+  var rules = CurrentRules.get();
 
   if(!level) {
     return;
@@ -18,6 +19,7 @@ Template.level_play.rendered = function () {
   this.level.onWin = showWinMessage;
   this.level.onLose = showLoseMessage;
   this.level.load(level);
+  this.levelDep.changed();
 
   if(rules && rules.length) {
     playGameLevel();
@@ -33,7 +35,7 @@ Template.level_play.rendered = function () {
       return;
     }
 
-    if(self.counter + 1 === 120) {
+    if(self.counter + 1 === self.level.getMaxTurns()) {
       showTimeoutMessage();
       return;
     }
@@ -61,16 +63,26 @@ Template.level_play.destroyed = function () {
 
 Template.level_play.helpers({
   isLevel: function () {
-    var level = Session.get('level');
-    return !!level;
+    var levelName = CurrentLevel.get();
+    return !!levelName;
   },
   counter: function () {
     Template.instance().counterDep.depend();
     var counter = Template.instance().counter;
     return counter || 0;
   },
+  maxTime: function () {
+    Template.instance().levelDep.depend();
+    var level = Template.instance().level;
+
+    if(!level) {
+      return 0;
+    }
+
+    return level.getMaxTurns();
+  },
   levelInfo: function () {
-    var levelName = Session.get('level');
+    var levelName = CurrentLevel.get();
     var level = Levels.findOne({name: levelName});
     return level.intro;
   },

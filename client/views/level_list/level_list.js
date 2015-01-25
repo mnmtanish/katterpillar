@@ -8,8 +8,8 @@ Template.level_list.helpers({
 Template.level_list.events({
   'click .level-link': function (e) {
     e.preventDefault();
-    Session.set('rules', []);
-    Session.set('level', this.name);
+    CurrentRules.set([]);
+    CurrentLevel.set(this.name);
     localStorage.setItem('last-level-played', this.name);
     Router.go('/rules');
   }

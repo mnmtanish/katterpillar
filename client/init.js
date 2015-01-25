@@ -1,5 +1,5 @@
 var lastLevel = localStorage.getItem('last-level-played');
 if(lastLevel) {
-  Session.set('level', lastLevel);
+  CurrentLevel.set(lastLevel);
   Router.go('/rules');
 }

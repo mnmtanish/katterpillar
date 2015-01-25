@@ -2,6 +2,7 @@ Levels.insert({
   order: 2,
   name: 'tutorial-2',
   size: 12,
+  turns: 20,
   title: 'Tutorial Level 2',
   walls: [],
   fruits: [

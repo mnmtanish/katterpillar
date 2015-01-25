@@ -26,7 +26,7 @@
   color: #aaa;
 }
 
-.rule-code .reorder-rule {
+.rule-code .configure-rule {
   position: absolute;
   top: 6px;
   left: 12px;
@@ -36,6 +36,6 @@
   text-decoration: none;
 }
 
-.rule-code .reorder-rule:hover {
+.rule-code .configure-rule:hover {
   color: #aaa;
 }

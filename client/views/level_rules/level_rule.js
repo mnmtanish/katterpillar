@@ -31,7 +31,7 @@ Template.level_rule.helpers({
 
 
 function removeRule (id) {
-  var rules = Session.get('rules');
+  var rules = CurrentRules.get();
   var result = false;
 
   for(var i=0; i<rules.length; ++i) {
@@ -49,7 +49,7 @@ function removeRule (id) {
   }
 
   if(result) {
-    Session.set('rules', rules);
+    CurrentRules.set(rules);
   }
 
   return result;

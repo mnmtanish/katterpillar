@@ -1,0 +1,1 @@
+CurrentLevel = new ReactiveVar(null);

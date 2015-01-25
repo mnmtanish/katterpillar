@@ -22,11 +22,11 @@ Template.level_rule_insert.events({
   },
   'click .rule-snippet-name': function (e) {
     e.preventDefault();
-    var rules = Session.get('rules') || [];
-    var ruleId = Random.id();
-    var ruleName = this.toString();
-    rules.push({id: ruleId, name: ruleName, params: {}});
-    Session.set('rules', rules);
+    var rules = CurrentRules.get() || [];
+    var name = this.toString();
+    var rule = new Commands[name]();
+    rules.push(rule);
+    CurrentRules.set(rules);
     Template.instance().isExtended.set(false);
   },
 });
@@ -40,6 +40,7 @@ Template.level_rule_insert.helpers({
     return insertTypes;
   },
   ruleName: function () {
-    return GameRules[this].name;
+    var name = this.toString();
+    return Commands.getTitle(name);
   }
 });

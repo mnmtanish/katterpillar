@@ -46,6 +46,10 @@ LevelClass.prototype.setDirection = function(pos) {
 };
 
 
+LevelClass.prototype.getMaxTurns = function() {
+  return this.params.turns;
+};
+
 LevelClass.prototype.getDirection = function() {
   return this._snakeDirection;
 };

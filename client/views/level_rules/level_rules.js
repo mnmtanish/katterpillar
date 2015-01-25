@@ -1,14 +1,13 @@
 Template.level_rules.helpers({
   isLevel: function () {
-    var level = Session.get('level');
-    return !!level;
+    var levelName = CurrentLevel.get();
+    return !!levelName;
   },
   rules: function () {
-    var rules = Session.get('rules');
-    return rules;
+    return CurrentRules.get();
   },
   levelInfo: function () {
-    var levelName = Session.get('level');
+    var levelName = CurrentLevel.get();
     var level = Levels.findOne({name: levelName});
     return level.intro;
   },

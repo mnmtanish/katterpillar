@@ -23,15 +23,13 @@ RulesClass.prototype._processNextRule = function() {
   }
 
   var current = this.level.getDirection();
-  var params = {current: current};
-  var directions = GameRules[rule.name].getDirection(params);
+  var directions = rule.getDirection(current);
   this.queue = this.queue.concat(directions);
 };
 
 
 RulesClass.prototype._nextRule = function() {
-  var rules = Session.get('rules');
-  var size = rules.length;
-  var index = (this.index++) % size;
+  var rules = CurrentRules.get();
+  var index = this.index++;
   return rules[index];
 };

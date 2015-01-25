@@ -1,0 +1,1 @@
+CurrentRules = new ReactiveVar([]);
