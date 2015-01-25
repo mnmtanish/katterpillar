@@ -13,9 +13,10 @@ LevelClass = function (target) {
 LevelClass.prototype._styles = {
   bg: {fill: '#FCFCFC', stroke: '#EEEEEE', strokeWidth: 4, radius: 0.3},
   wall: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
-  snake: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 8, radius: 1},
-  head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 8, radius: 1.15},
-  fruit: {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 4, radius: 0.5},
+  snake: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 20, radius: 1},
+  head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 20, radius: 1.15},
+  fruit: {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 12, radius: 0.5},
+  randomFruit: {fill: '#FF4081', stroke: '#880E4F', strokeWidth: 12, radius: 0.5},
 };
 
 
@@ -30,6 +31,7 @@ LevelClass.prototype.setup = function() {
   this._createMap(element);
   this._createWalls();
   this._createFruits();
+  this._createRandomFruits();
   this._createSnake();
   this._setInitialDirection();
 };
@@ -183,6 +185,24 @@ LevelClass.prototype._createFruits = function() {
 };
 
 
+LevelClass.prototype._createRandomFruits = function() {
+  var svg = this._mapSvg;
+  var styles = this._styles.randomFruit;
+  var radius = this._toRadius(styles);
+
+  var coords = this._getFreeCoordinates(this.params.randomFruits);
+  console.log('! coords\n', coords);
+
+  for(var i=0; i<coords.length; ++i) {
+    var pos = this._toPosition(coords[i].x, coords[i].y);
+    var circle = svg.circle(pos.x, pos.y, radius);
+    circle.attr(styles);
+    circle.pos = pos;
+    this._fruitDots.push(circle);
+  }
+};
+
+
 LevelClass.prototype._createSnake = function() {
   var svg = this._mapSvg;
   var bodyStyles = this._styles.snake;
@@ -230,4 +250,36 @@ LevelClass.prototype._toPosition = function(x, y) {
 
 LevelClass.prototype._toRadius = function(styles) {
   return styles.radius * this._gridSize / 2;
+};
+
+
+LevelClass.prototype._getFreeCoordinates = function(count) {
+  var snake = this.params.snake;
+  var walls = this.params.walls;
+  var fruits = this.params.fruits;
+  var elements = snake.concat(walls).concat(fruits);
+  console.log('! elements\n', elements);
+
+  var allCoords = {};
+  var i, j, el;
+
+  for(i=0; i<this.params.size; ++i) {
+    for(j=0; j<this.params.size; ++j) {
+      allCoords[i+','+j] = true;
+    }
+  }
+
+  for(i=0; i<elements.length; ++i) {
+    el = elements[i];
+    delete allCoords[el.x+','+el.y];
+  }
+
+  var keys = _.keys(allCoords);
+  keys = _.shuffle(keys);
+  keys = _.first(keys, count);
+
+  return keys.map(function (str) {
+    var parts = str.split(',');
+    return {x: parseInt(parts[0]), y: parseInt(parts[1])};
+  });
 };
