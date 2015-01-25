@@ -129,10 +129,7 @@ function showWinMessage () {
     closeOnCancel: true
   }, function(isConfirm) {
     if (isConfirm) {
-      CurrentRules.set([]);
-      CurrentLevel.set(next.name);
-      localStorage.setItem('last-level-played', next.name);
-      Router.go('/levels');
+      Router.go('/play/'+next.name);
     }
   });
 }

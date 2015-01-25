@@ -28,6 +28,7 @@ Router.route('/levels', function () {
 });
 
 Router.route('/play/:levelName', function () {
+  var self = this;
   var currentName = CurrentLevel.get();
 
   if(this.params.levelName && this.params.levelName !== currentName) {
@@ -36,7 +37,11 @@ Router.route('/play/:levelName', function () {
     localStorage.setItem('last-level-played', this.params.levelName);
   }
 
-  this.render('level_play');
+  // FIXME: hack to re render template
+  this.render('nothing');
+  setTimeout(function () {
+    self.render('level_play');
+  }, 0);
 });
 
 Router.route('/rules', function () {
