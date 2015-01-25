@@ -1,6 +1,6 @@
 $(function () {
   var soundsDisabled = localStorage.getItem('sounds-disabled');
-  if(soundsDisabled) {
+  if(soundsDisabled === 'true') {
     GameSounds.enabled.set(false);
   }
 
