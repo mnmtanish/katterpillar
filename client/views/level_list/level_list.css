@@ -1,0 +1,29 @@
+.levels-list {
+  padding-left: 0;
+}
+
+.levels-list li {
+  display: block;
+}
+
+.levels-list li a {
+  display: block;
+  margin: 12px 0;
+  padding: 8px 12px;
+  background: #fafafa;
+  border-radius: 16px;
+  border: solid 1px #aaa;
+}
+
+.levels-list li:hover {
+  color: #888;
+  border-color: #888;
+}
+
+.levels-list li a {
+  color: #888;
+}
+
+.levels-list li:hover a {
+  color: #666;
+}
