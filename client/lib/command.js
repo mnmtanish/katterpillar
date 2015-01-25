@@ -104,7 +104,6 @@ Commands.loop_repeat.prototype.getDirection = function (current) {
     }
   }
 
-  console.log('! _.flatten(directions)\n', _.flatten(directions));
   return _.flatten(directions);
 };
 
