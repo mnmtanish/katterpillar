@@ -1,0 +1,15 @@
+.svg-element {
+  display: block;
+  margin: 0 auto;
+}
+
+.step-counter {
+  position: absolute;
+  top: 67px;
+  right: 0px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #888;
+  background: #EEE;
+  padding: 2px 8px;
+}

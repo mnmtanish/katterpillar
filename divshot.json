@@ -1,10 +1,9 @@
 {
   "name": "ss15-demigeeks",
-  "root": "./",
-  "clean_urls": true,
+  "root": "./.client",
+  "clean_urls": false,
   "error_page": "error.html",
   "routes": {
-    "/game": "index.html",
-    "/game/**": "index.html"
+    "/**": "index.html"
   }
 }

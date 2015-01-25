@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf .build
+mkdir .build
+meteor build --directory .build
+
+rm -rf .client/bundle.js
+rm -rf .client/styles.css
+cp .build/bundle/programs/web.browser/*.js .client/bundle.js
+cp .build/bundle/programs/web.browser/*.css .client/styles.css

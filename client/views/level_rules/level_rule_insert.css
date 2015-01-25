@@ -1,0 +1,48 @@
+.add-rule-snippet {
+  display: inline-block;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #aaa;
+  border-bottom: dotted 1px #ccc;
+  font-size: 12px;
+  margin-left: 24px;
+}
+
+.rule-snippet-name {
+  display: inline-block;
+  text-decoration: none;
+  padding: 6px 18px;
+  color: #888;
+  background: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.rule-snippet-name:hover {
+  color: #333;
+  border-color: #333;
+}
+
+.rule-snippets-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.rule-snippets {
+  position: fixed;
+  top: 87px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #fff;
+  border: 1px solid #888;
+  padding: 20px;
+  overflow-y: scroll;
+  z-index: 20;
+}
