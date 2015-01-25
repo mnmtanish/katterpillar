@@ -7,6 +7,9 @@ LevelClass = function (target) {
   this._fruitDots = [];
   this._caterpillarDots = [];
   this._caterpillarDirection = {x: 0, y: 0};
+
+  this._caterpillarEyes = [];
+  this._eyeOffset = 0;
 };
 
 
@@ -34,6 +37,7 @@ LevelClass.prototype.setup = function() {
   this._createRandomFruits();
   this._createCaterpillar();
   this._setInitialDirection();
+  this._setCaterpillarEyes();
 };
 
 
@@ -118,7 +122,7 @@ LevelClass.prototype.tick = function(callback) {
       circle = svg.circle(posForNewDot.x, posForNewDot.y, radius);
       circle.attr(bodyStyles);
       circle.pos = posForNewDot;
-      this._caterpillarDots.push(circle);
+      this._caterpillarDots.unshift(circle);
     }
 
     done = done && fruit.consumed;
@@ -129,6 +133,10 @@ LevelClass.prototype.tick = function(callback) {
     var pos = dots[i].pos;
     circle.stop();
     circle.animate({cx: pos.x, cy: pos.y}, delay, mina.easein);
+  }
+
+  if(this._caterpillarDirection.x || this._caterpillarDirection.y) {
+    this._animateCaterpillarEyes();
   }
 
   if(done) {
@@ -300,4 +308,52 @@ LevelClass.prototype._getFreeCoordinates = function(count) {
     var parts = str.split(',');
     return {x: parseInt(parts[0]), y: parseInt(parts[1])};
   });
+};
+
+
+LevelClass.prototype._setCaterpillarEyes = function() {
+  this._eyeOffset = this._gridSize * 0.4;
+  this._eyeRadius = this._gridSize * 0.2;
+
+  var svg = this._mapSvg;
+  var pos = _.last(this._caterpillarDots).pos;
+  var dir = this._caterpillarDirection;
+  var lEye, rEye;
+
+  if(dir.x) {
+    // FIXME: got it to work with some trial and error (ayyo salli!)
+
+    var lEye = svg.circle(pos.x + this._eyeOffset * dir.x, pos.y + this._eyeOffset * -1 * dir.x, this._eyeRadius);
+    var rEye = svg.circle(pos.x + this._eyeOffset * dir.x, pos.y - this._eyeOffset * -1 * dir.x, this._eyeRadius);
+  } else {
+    var lEye = svg.circle(pos.x + this._eyeOffset * dir.y, pos.y + this._eyeOffset * dir.y, this._eyeRadius);
+    var rEye = svg.circle(pos.x - this._eyeOffset * dir.y, pos.y + this._eyeOffset * dir.y, this._eyeRadius);
+  }
+
+  this._caterpillarEyes.push(lEye);
+  this._caterpillarEyes.push(rEye);
+};
+
+
+LevelClass.prototype._animateCaterpillarEyes = function() {
+  this._eyeOffset = this._gridSize * 0.4;
+  this._eyeRadius = this._gridSize * 0.2;
+
+  var svg = this._mapSvg;
+  var pos = _.last(this._caterpillarDots).pos;
+  var dir = this._caterpillarDirection;
+  var lEye = this._caterpillarEyes[0];
+  var rEye = this._caterpillarEyes[1];
+
+  if(dir.x) {
+    // FIXME: got it to work with some trial and error (ayyo salli!)
+    var lPos = {cx: pos.x + this._eyeOffset * dir.x, cy: pos.y + this._eyeOffset * -1 * dir.x}
+    var rPos = {cx: pos.x + this._eyeOffset * dir.x, cy: pos.y - this._eyeOffset * -1 * dir.x}
+  } else {
+    var lPos = {cx: pos.x + this._eyeOffset * dir.y, cy: pos.y + this._eyeOffset * dir.y};
+    var rPos = {cx: pos.x - this._eyeOffset * dir.y, cy: pos.y + this._eyeOffset * dir.y};
+  }
+
+  lEye.animate(lPos, 300, mina.easein);
+  rEye.animate(rPos, 300, mina.easein);
 };
