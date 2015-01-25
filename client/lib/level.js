@@ -101,9 +101,15 @@ LevelClass.prototype.tick = function(callback) {
     }
   }
 
+  done = true;
   for(i=0; i<fruits.length; ++i) {
     var fruit = fruits[i];
-    done = head.pos.x === fruit.pos.x && head.pos.y === fruit.pos.y;
+    if(head.pos.x === fruit.pos.x && head.pos.y === fruit.pos.y) {
+      fruit.consumed = true;
+      fruit.attr('display', 'none');
+    }
+
+    done = done && fruit.consumed;
   }
 
   for(i=0; i<dots.length; ++i) {
