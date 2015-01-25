@@ -1,12 +1,7 @@
-var insertTypes = [
-  {
-    type: 'Snake',
-    rules: ['snake_moveForward', 'snake_turnLeft', 'snake_turnRight']
-  }
-];
-
+ParentRule = null;
 
 Template.level_rule_insert.created = function () {
+  this.parent = this.data;
   this.isExtended = new ReactiveVar(false);
 };
 
@@ -22,11 +17,19 @@ Template.level_rule_insert.events({
   },
   'click .rule-snippet-name': function (e) {
     e.preventDefault();
+    var parent = Template.instance().parent;
     var rules = CurrentRules.get() || [];
     var name = this.toString();
     var rule = new Commands[name]();
-    rules.push(rule);
+
+    if(parent) {
+      parent.children.push(rule);
+    } else {
+      rules.push(rule);
+    }
+
     CurrentRules.set(rules);
+    ParentRule = null;
     Template.instance().isExtended.set(false);
   },
 });
@@ -37,7 +40,7 @@ Template.level_rule_insert.helpers({
     return Template.instance().isExtended.get();
   },
   ruleTypes: function () {
-    return insertTypes;
+    return Commands.groups;
   },
   ruleName: function () {
     var name = this.toString();

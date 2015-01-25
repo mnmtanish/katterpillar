@@ -1,9 +1,19 @@
 <template name="level_rule">
-  <div class="rule-code">
-    <a href="#" class="configure-rule"><i class="fa fa-cogs"></i></a>
+  <div class="rule-code ">
+    <a href="#" class="sort-rule"><i class="fa fa-sort"></i></a>
     {{> UI.dynamic template=ruleTemplate}}
     <a href="#" class="remove-rule"><i class="fa fa-remove"></i></a>
   </div>
+
+  {{#if supportsChildren}}
+  <div class="rule-children">
+    {{#each children}}
+      {{> level_rule}}
+    {{/each}}
+
+    {{> level_rule_insert}}
+  </div>
+  {{/if}}
 </template>
 
 
@@ -19,4 +29,19 @@
 
 <template name="level_rule_snake_turnRight">
   <pre>snake.turnRight();</pre>
+</template>
+
+
+<template name="level_rule_loop_repeat">
+  <pre>repeatTimes(<span contenteditable="true"></span>)</pre>
+</template>
+
+
+<template name="level_rule_condition_if">
+  <pre>if(<span contenteditable="true">true</span>)</pre>
+</template>
+
+
+<template name="level_rule_condition_unless">
+  <pre>unless(<span contenteditable="true">true</span>)</pre>
 </template>

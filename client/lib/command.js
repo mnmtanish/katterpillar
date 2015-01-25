@@ -4,6 +4,25 @@ Commands.getTitle = function (key) {
   return Commands[key].prototype.title;
 };
 
+Commands.supportsChildren = function (key) {
+  return Commands[key].prototype.supportsChildren;
+};
+
+Commands.groups = [
+  {
+    type: 'Snake',
+    rules: ['snake_moveForward', 'snake_turnLeft', 'snake_turnRight']
+  },
+  {
+    type: 'Loops',
+    rules: ['loop_repeat']
+  },
+  {
+    type: 'Conditions',
+    rules: ['condition_if', 'condition_unless']
+  },
+];
+
 //  -----
 
 Commands.snake_moveForward = function () {
@@ -57,4 +76,64 @@ Commands.snake_turnRight.prototype.getDirection = function (current) {
   var id = current.x + ',' + current.y;
   var next = this._directions[id];
   return [next];
+};
+
+//  -----
+
+Commands.loop_repeat = function () {
+  this.id = Random.id();
+  this.children = [];
+};
+
+Commands.loop_repeat.prototype.name = 'loop_repeat';
+Commands.loop_repeat.prototype.title = 'repeat';
+Commands.loop_repeat.prototype.supportsChildren = true;
+Commands.loop_repeat.prototype.children = [];
+Commands.loop_repeat.prototype.count = 10;
+
+Commands.loop_repeat.prototype.getDirection = function (current) {
+  console.log('! this\n', this);
+  // var id = current.x + ',' + current.y;
+  // var next = this._directions[id];
+  return [];
+};
+
+//  -----
+
+Commands.condition_if = function () {
+  this.id = Random.id();
+  this.children = [];
+};
+
+Commands.condition_if.prototype.name = 'condition_if';
+Commands.condition_if.prototype.title = 'if';
+Commands.condition_if.prototype.supportsChildren = true;
+Commands.condition_if.prototype.children = [];
+Commands.condition_if.prototype.condition = 'true';
+
+Commands.condition_if.prototype.getDirection = function (current) {
+  console.log('! this\n', this);
+  // var id = current.x + ',' + current.y;
+  // var next = this._directions[id];
+  return [];
+};
+
+//  -----
+
+Commands.condition_unless = function () {
+  this.id = Random.id();
+  this.children = [];
+};
+
+Commands.condition_unless.prototype.name = 'condition_unless';
+Commands.condition_unless.prototype.title = 'unless';
+Commands.condition_unless.prototype.supportsChildren = true;
+Commands.condition_unless.prototype.children = [];
+Commands.condition_unless.prototype.condition = 'true';
+
+Commands.condition_unless.prototype.getDirection = function (current) {
+  console.log('! this\n', this);
+  // var id = current.x + ',' + current.y;
+  // var next = this._directions[id];
+  return [];
 };

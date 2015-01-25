@@ -8,8 +8,19 @@
   font-size: 12px;
 }
 
+.rule-children {
+  padding-left: 20px;
+}
+
 .rule-code pre {
   margin: 0;
+}
+
+.rule-code pre span {
+  color: #C62828;
+  padding: 0 2px;
+  border-bottom: dotted 1px;
+  outline: none;
 }
 
 .rule-code .remove-rule {
@@ -26,7 +37,7 @@
   color: #aaa;
 }
 
-.rule-code .configure-rule {
+.rule-code .sort-rule {
   position: absolute;
   top: 6px;
   left: 12px;
@@ -36,6 +47,13 @@
   text-decoration: none;
 }
 
-.rule-code .configure-rule:hover {
+.rule-code .sort-rule:hover {
   color: #aaa;
+}
+
+.insert-child-command {
+  display: inline-block;
+  color: #aaa;
+  border-bottom: 1px dotted;
+  font-size: 12px;
 }

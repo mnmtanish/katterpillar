@@ -27,11 +27,17 @@ Template.level_rule.helpers({
   isExtended: function () {
     return Template.instance().isExtended.get();
   },
+  supportsChildren: function () {
+    return Commands.supportsChildren(this.name);
+  },
+  children: function () {
+    return this.children;
+  },
 });
 
 
-function removeRule (id) {
-  var rules = CurrentRules.get();
+function removeRule (id, children) {
+  var rules = children || CurrentRules.get();
   var result = false;
 
   for(var i=0; i<rules.length; ++i) {
@@ -48,7 +54,7 @@ function removeRule (id) {
     }
   }
 
-  if(result) {
+  if(result && !children) {
     CurrentRules.set(rules);
   }
 
