@@ -3,7 +3,7 @@ LevelClass = function (target) {
   this.params = null;
   this._mapSvg = null;
   this._gridSize = null;
-  this._wallDots = [];
+  this._stoneDots = [];
   this._fruitDots = [];
   this._caterpillarDots = [];
   this._caterpillarDirection = {x: 0, y: 0};
@@ -12,7 +12,7 @@ LevelClass = function (target) {
 
 LevelClass.prototype._styles = {
   bg: {fill: '#FCFCFC', stroke: '#EEEEEE', strokeWidth: 4, radius: 0.3},
-  wall: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
+  stone: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
   caterpillar: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 20, radius: 1},
   head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 20, radius: 1.15},
   fruit: {fill: '#B2FF59', stroke: '#33691E', strokeWidth: 12, radius: 0.5},
@@ -58,7 +58,7 @@ LevelClass.prototype.getDirection = function() {
 
 
 LevelClass.prototype.tick = function(callback) {
-  var walls = this._wallDots;
+  var stones = this._stoneDots;
   var fruits = this._fruitDots;
   var dots = this._caterpillarDots;
   var head = dots[dots.length - 1];
@@ -85,11 +85,11 @@ LevelClass.prototype.tick = function(callback) {
     return;
   }
 
-  for(i=0; i<walls.length; ++i) {
-    var wall = walls[i];
-    lost = head.pos.x === wall.pos.x && head.pos.y === wall.pos.y;
+  for(i=0; i<stones.length; ++i) {
+    var stone = stones[i];
+    lost = head.pos.x === stone.pos.x && head.pos.y === stone.pos.y;
     if(lost) {
-      this.onLose('The caterpillar just hit a wall');
+      this.onLose('The caterpillar just hit a stone');
       return;
     }
   }
@@ -154,9 +154,9 @@ LevelClass.prototype._createMap = function(element) {
 
 LevelClass.prototype._createWalls = function() {
   var svg = this._mapSvg;
-  var styles = this._styles.wall;
+  var styles = this._styles.stone;
   var radius = this._toRadius(styles);
-  var coords = this.params.walls;
+  var coords = this.params.stones;
 
   for(var i=0; i<coords.length; ++i) {
     var pos = this._toPosition(coords[i].x, coords[i].y);
@@ -164,7 +164,7 @@ LevelClass.prototype._createWalls = function() {
     rect.transform('rotate(45, '+pos.x+', '+pos.y+')');
     rect.attr(styles);
     rect.pos = pos;
-    this._wallDots.push(rect);
+    this._stoneDots.push(rect);
   }
 };
 
@@ -257,9 +257,9 @@ LevelClass.prototype._getFreeCoordinates = function(count) {
   }
 
   var caterpillar = this.params.caterpillar;
-  var walls = this.params.walls;
+  var stones = this.params.stones;
   var fruits = this.params.fruits;
-  var elements = caterpillar.concat(walls).concat(fruits);
+  var elements = caterpillar.concat(stones).concat(fruits);
 
   var allCoords = {};
   var i, j, el;

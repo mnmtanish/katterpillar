@@ -4,7 +4,7 @@ Levels.insert({
   size: 12,
   turns: 40,
   title: 'Basics 1',
-  walls: [
+  stones: [
     {x: 2, y: 0},
     {x: 2, y: 1},
     {x: 2, y: 2},

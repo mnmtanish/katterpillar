@@ -4,7 +4,7 @@ Levels.insert({
   size: 12,
   turns: 20,
   title: 'Tutorial Level 3',
-  walls: [
+  stones: [
     {x: 6, y: 5}
   ],
   fruits: [
