@@ -20,11 +20,12 @@ Template.level_play.rendered = function () {
   this.level.onLose = showLoseMessage;
   this.level.load(level);
   this.levelDep.changed();
+  $('.no-rules').hide();
 
   if(rules && rules.length) {
     playGameLevel();
   } else {
-    showNoRules();
+    $('.no-rules').show();
   }
 
   $(window).on('resize', resize);
@@ -129,7 +130,7 @@ function showWinMessage () {
       CurrentRules.set([]);
       CurrentLevel.set(next.name);
       localStorage.setItem('last-level-played', next.name);
-      Router.go('/rules');
+      Router.go('/play');
     }
   });
 }
@@ -161,14 +162,5 @@ function showTimeoutMessage () {
     title: 'Taking so much time',
     text: 'Try to complete the level with fewer steps.',
     type: 'warning',
-  });
-}
-
-function showNoRules () {
-  swal({
-    title: 'Nothing to do!',
-    text: 'Please give it some commands.',
-    type: 'warning',
-    timer: 1500,
   });
 }

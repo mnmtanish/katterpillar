@@ -1,6 +1,11 @@
 <template name="level_play">
   {{#if isLevel}}
-    <svg version="1.1" class="svg-element" viewBox="0 0 2400 2400"></svg>
+    <div class="v-aling-wrapper">
+      <div class="v-align">
+        <svg version="1.1" class=" svg-element" viewBox="0 0 2400 2400"></svg>
+      </div>
+    </div>
+
     <div class="step-counter">Time: {{counter}} / {{maxTime}}</div>
   {{else}}
     {{goToHomepage}}

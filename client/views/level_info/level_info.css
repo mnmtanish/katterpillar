@@ -1,14 +1,20 @@
 .level-info {
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.5;
-  border: solid 1px #ccc;
+  border: solid 1px #eee;
   padding: 10px 20px;
   margin-bottom: 50px;
 }
 
-.level-info code {
-  padding: 3px 12px;
-  background: #fafafa;
-  border: solid 1px #eee;
+.level-info h1 {
   font-size: 14px;
+}
+
+.level-info code {
+  padding: 1px 8px;
+  background: #FAFAFA;
+  border: solid 1px #CCC;
+  font-size: 12px;
+  border-radius: 12px;
+  }
 }

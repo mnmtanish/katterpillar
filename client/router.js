@@ -11,6 +11,14 @@ Router.route('/end', function () {
   this.render('completed');
 });
 
+Router.route('/help', function () {
+  this.render('instructions');
+});
+
+Router.route('/about', function () {
+  this.render('information');
+});
+
 Router.route('/levels', function () {
   this.render('level_list');
 });

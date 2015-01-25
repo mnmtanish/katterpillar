@@ -16,8 +16,8 @@ jquery
 random
 ejson
 iron:router
-natestrauser:font-awesome
-mirageglobe:snapsvgcdn
+fortawesome:fontawesome
+jeremy:snapsvg
 reactive-var
 reactive-dict
 chuangbo:marked
