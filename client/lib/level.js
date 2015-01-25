@@ -258,7 +258,6 @@ LevelClass.prototype._getFreeCoordinates = function(count) {
   var walls = this.params.walls;
   var fruits = this.params.fruits;
   var elements = snake.concat(walls).concat(fruits);
-  console.log('! elements\n', elements);
 
   var allCoords = {};
   var i, j, el;
