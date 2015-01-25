@@ -7,6 +7,8 @@ Template.level_play.created = function () {
 
 Template.level_play.rendered = function () {
   var self = this;
+  instance = this;
+
   var level = CurrentLevel.get();
   var rules = CurrentRules.get();
 
@@ -117,7 +119,7 @@ function showWinMessage () {
 
   swal({
     title: 'Awesome!',
-    text: 'You have finished "'+level.name+'".',
+    text: 'You have finished "'+level.title+'".',
     type: 'success',
     showCancelButton: true,
     confirmButtonColor: '#DD6B55',
@@ -130,7 +132,7 @@ function showWinMessage () {
       CurrentRules.set([]);
       CurrentLevel.set(next.name);
       localStorage.setItem('last-level-played', next.name);
-      Router.go('/play');
+      Router.go('/levels');
     }
   });
 }

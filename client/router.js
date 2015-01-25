@@ -23,7 +23,15 @@ Router.route('/levels', function () {
   this.render('level_list');
 });
 
-Router.route('/play', function () {
+Router.route('/play/:levelName', function () {
+  var currentName = CurrentLevel.get();
+
+  if(this.params.levelName && this.params.levelName !== currentName) {
+    CurrentRules.set([]);
+    CurrentLevel.set(this.params.levelName);
+    localStorage.setItem('last-level-played', this.params.levelName);
+  }
+
   this.render('level_play');
 });
 
