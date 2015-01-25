@@ -1,5 +1,5 @@
 Levels.insert({
-  order: 6,
+  order: 13,
   name: 'basics-1',
   size: 12,
   turns: 40,
