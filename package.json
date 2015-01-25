@@ -1,7 +1,7 @@
 {
   "name": "ss15-demigeeks",
   "version": "1.0.0",
-  "description": "Caterpillar game for static showdown hackathon",
+  "description": "Katterpillar game for static showdown hackathon",
   "main": "index.js",
   "scripts": {
     "test": "echo Hello World"
