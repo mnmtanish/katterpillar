@@ -92,10 +92,20 @@ Commands.loop_repeat.prototype.children = [];
 Commands.loop_repeat.prototype.count = 10;
 
 Commands.loop_repeat.prototype.getDirection = function (current) {
-  console.log('! this\n', this);
-  // var id = current.x + ',' + current.y;
-  // var next = this._directions[id];
-  return [];
+  var directions = [];
+  var previous = [current];
+
+  for(var c=0; c<this.count; ++c) {
+    for(var i=0; i<this.children.length; ++i) {
+      var child = this.children[i];
+      var lastDirection = previous[previous.length - 1];
+      previous = child.getDirection(lastDirection);
+      directions.push(previous);
+    }
+  }
+
+  console.log('! _.flatten(directions)\n', _.flatten(directions));
+  return _.flatten(directions);
 };
 
 //  -----
@@ -113,8 +123,6 @@ Commands.condition_if.prototype.condition = 'true';
 
 Commands.condition_if.prototype.getDirection = function (current) {
   console.log('! this\n', this);
-  // var id = current.x + ',' + current.y;
-  // var next = this._directions[id];
   return [];
 };
 
@@ -133,7 +141,5 @@ Commands.condition_unless.prototype.condition = 'true';
 
 Commands.condition_unless.prototype.getDirection = function (current) {
   console.log('! this\n', this);
-  // var id = current.x + ',' + current.y;
-  // var next = this._directions[id];
   return [];
 };
