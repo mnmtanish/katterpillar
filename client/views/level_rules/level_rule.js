@@ -12,6 +12,10 @@ Template.level_rule.events({
     e.preventDefault();
     Template.instance().isExtended.set(false);
   },
+  'click .remove-rule': function (e) {
+    e.preventDefault();
+    removeRule(this.id);
+  },
 });
 
 
@@ -24,3 +28,29 @@ Template.level_rule.helpers({
     return Template.instance().isExtended.get();
   },
 });
+
+
+function removeRule (id) {
+  var rules = Session.get('rules');
+  var result = false;
+
+  for(var i=0; i<rules.length; ++i) {
+    var rule = rules[i];
+    if(rule.id === id) {
+      rules.splice(i, 1);
+      result = true;
+      break;
+    }
+
+    if(rule.children && removeRule(id, rule.children)) {
+      result = true;
+      break;
+    }
+  }
+
+  if(result) {
+    Session.set('rules', rules);
+  }
+
+  return result;
+}
