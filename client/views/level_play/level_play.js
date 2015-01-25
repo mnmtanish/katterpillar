@@ -148,10 +148,10 @@ function showWinMessageFinal () {
   });
 }
 
-function showLoseMessage () {
+function showLoseMessage (reason) {
   swal({
     title: 'Please Try again.',
-    text: 'Please try again. Read the text on rules page for help.',
+    text: reason,
     type: 'error'
   });
 }

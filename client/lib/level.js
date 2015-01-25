@@ -61,7 +61,9 @@ LevelClass.prototype.tick = function(callback) {
   var dots = this._snakeDots;
   var head = dots[dots.length - 1];
   var done = false;
+  var lost = false;
   var delay = 300;
+  var gSize = this._gridSize;
   var i;
 
   if(this._snakeDirection.x || this._snakeDirection.y) {
@@ -75,11 +77,26 @@ LevelClass.prototype.tick = function(callback) {
     };
   }
 
+  if((head.pos.x)/gSize >= this.params.size || (head.pos.x)/gSize < 0
+    || (head.pos.y)/gSize >= this.params.size || (head.pos.y)/gSize < 0) {
+    this.onLose('The snake has travelled out of the game universe');
+    return;
+  }
+
   for(i=0; i<walls.length; ++i) {
     var wall = walls[i];
-    done = head.pos.x === wall.pos.x && head.pos.y === wall.pos.y;
-    if(done) {
-      this.onLose();
+    lost = head.pos.x === wall.pos.x && head.pos.y === wall.pos.y;
+    if(lost) {
+      this.onLose('The snake just hit a wall');
+      return;
+    }
+  }
+
+  for(i=0; i<dots.length - 1; ++i) {
+    var dot = dots[i];
+    lost = head.pos.x === dot.pos.x && head.pos.y === dot.pos.y;
+    if(lost) {
+      this.onLose('Ouch! The snake just bit itself');
       return;
     }
   }
