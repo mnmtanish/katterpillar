@@ -1,0 +1,15 @@
+.home-logo {
+  font-size: 50px;
+  margin: 50px 0;
+}
+
+.home-links a {
+  display: block;
+  width: 200px;
+  background: #fafafa;
+  margin: 10px auto;
+  padding: 10px;
+  border: solid 1px #ccc;
+  border-radius: 50px;
+  color: #888;
+}
