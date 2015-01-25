@@ -189,9 +189,7 @@ LevelClass.prototype._createRandomFruits = function() {
   var svg = this._mapSvg;
   var styles = this._styles.randomFruit;
   var radius = this._toRadius(styles);
-
   var coords = this._getFreeCoordinates(this.params.randomFruits);
-  console.log('! coords\n', coords);
 
   for(var i=0; i<coords.length; ++i) {
     var pos = this._toPosition(coords[i].x, coords[i].y);
