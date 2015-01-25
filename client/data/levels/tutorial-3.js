@@ -19,6 +19,6 @@ Levels.insert({
   intro: [
     '# Tutorial Level 3',
     '',
-    'Throughout the game you\'ll face many obstacles which will hopefully make you think more like a software programmer to overcome. Let\'s try a simple wall for now',
+    'Throughout the game you\'ll face many obstacles which will hopefully encourage you to think more like a software programmer to overcome.',
   ].join('\n')
 });

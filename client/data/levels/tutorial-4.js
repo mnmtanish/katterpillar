@@ -23,6 +23,6 @@ Levels.insert({
   intro: [
     '# Tutorial Level 4',
     '',
-    'Programmers are lazy people, why work hard when you can make the computer do that? Try to solve this one using one or more loops.',
+    'Programmers are lazy people, why work hard when you can make the computer do that for you?',
   ].join('\n')
 });
