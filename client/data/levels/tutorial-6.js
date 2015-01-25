@@ -42,7 +42,7 @@ Levels.insert({
     {x: 4, y: 4}
   ],
   randomFruits: 3,
-  snake: [
+  caterpillar: [
     {x: 1, y: 1},
     {x: 2, y: 1},
     {x: 3, y: 1},

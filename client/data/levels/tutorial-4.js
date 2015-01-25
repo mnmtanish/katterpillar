@@ -8,7 +8,7 @@ Levels.insert({
   fruits: [
     {x: 22, y: 22}
   ],
-  snake: [
+  caterpillar: [
     {x: 4, y: 1},
     {x: 4, y: 2},
     {x: 3, y: 2},

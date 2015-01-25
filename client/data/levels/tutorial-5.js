@@ -9,7 +9,7 @@ Levels.insert({
     {x: 4, y: 9},
     {x: 9, y: 9}
   ],
-  snake: [
+  caterpillar: [
     {x: 1, y: 4},
     {x: 2, y: 4},
     {x: 3, y: 4},

@@ -10,9 +10,9 @@ Commands.supportsChildren = function (key) {
 
 Commands.groups = [
   {
-    type: 'Snake',
-    desc: 'Commands to move the snake.',
-    rules: ['snake_moveForward', 'snake_turnLeft', 'snake_turnRight']
+    type: 'Caterpillar',
+    desc: 'Commands to move the caterpillar.',
+    rules: ['caterpillar_moveForward', 'caterpillar_turnLeft', 'caterpillar_turnRight']
   },
   {
     type: 'Loops',
@@ -33,33 +33,33 @@ Commands.groups = [
 
 //  -----
 
-Commands.snake_moveForward = function () {
+Commands.caterpillar_moveForward = function () {
   this.id = Random.id();
 };
 
-Commands.snake_moveForward.prototype.name = 'snake_moveForward';
-Commands.snake_moveForward.prototype.title = 'moveForward';
+Commands.caterpillar_moveForward.prototype.name = 'caterpillar_moveForward';
+Commands.caterpillar_moveForward.prototype.title = 'moveForward';
 
-Commands.snake_moveForward.prototype.getDirection = function (current) {
+Commands.caterpillar_moveForward.prototype.getDirection = function (current) {
   return [current];
 };
 
 //  -----
 
-Commands.snake_turnLeft = function () {
+Commands.caterpillar_turnLeft = function () {
   this.id = Random.id();
 };
 
-Commands.snake_turnLeft.prototype.name = 'snake_turnLeft';
-Commands.snake_turnLeft.prototype.title = 'turnLeft';
-Commands.snake_turnLeft.prototype._directions = {
+Commands.caterpillar_turnLeft.prototype.name = 'caterpillar_turnLeft';
+Commands.caterpillar_turnLeft.prototype.title = 'turnLeft';
+Commands.caterpillar_turnLeft.prototype._directions = {
   '0,1': {x: 1, y: 0},
   '0,-1': {x: -1, y: 0},
   '1,0': {x: 0, y: -1},
   '-1,0': {x: 0, y: 1},
 };
 
-Commands.snake_turnLeft.prototype.getDirection = function (current) {
+Commands.caterpillar_turnLeft.prototype.getDirection = function (current) {
   var id = current.x + ',' + current.y;
   var next = this._directions[id];
   return [next];
@@ -67,20 +67,20 @@ Commands.snake_turnLeft.prototype.getDirection = function (current) {
 
 //  -----
 
-Commands.snake_turnRight = function () {
+Commands.caterpillar_turnRight = function () {
   this.id = Random.id();
 };
 
-Commands.snake_turnRight.prototype.name = 'snake_turnRight';
-Commands.snake_turnRight.prototype.title = 'turnRight';
-Commands.snake_turnRight.prototype._directions = {
+Commands.caterpillar_turnRight.prototype.name = 'caterpillar_turnRight';
+Commands.caterpillar_turnRight.prototype.title = 'turnRight';
+Commands.caterpillar_turnRight.prototype._directions = {
   '0,1': {x: -1, y: 0},
   '0,-1': {x: 1, y: 0},
   '1,0': {x: 0, y: 1},
   '-1,0': {x: 0, y: -1},
 };
 
-Commands.snake_turnRight.prototype.getDirection = function (current) {
+Commands.caterpillar_turnRight.prototype.getDirection = function (current) {
   var id = current.x + ',' + current.y;
   var next = this._directions[id];
   return [next];
