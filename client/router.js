@@ -19,6 +19,10 @@ Router.route('/about', function () {
   this.render('information');
 });
 
+Router.route('/next', function () {
+  this.render('whats_next');
+});
+
 Router.route('/levels', function () {
   this.render('level_list');
 });

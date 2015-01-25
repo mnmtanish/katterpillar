@@ -26,7 +26,7 @@ Commands.groups = [
   },
   {
     type: 'User Functions',
-    desc: 'A set of commands saved by the user. A good place to store some frequently used functions. <a href="/funcs">add functions</a>',
+    desc: 'A set of commands saved by the user. A good place to store some frequently used functions. <a href="/next">add functions</a>',
     rules: []
   },
 ];
