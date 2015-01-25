@@ -4,13 +4,13 @@
   text-align: center;
   position: fixed;
   width: 100%;
-  background: #fff;
   z-index: 10;
   bottom: 0;
   left: 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #aaa;
   color: #aaa;
   box-sizing: border-box;
+  background: #eee;
 }
 
 .navigation a {
@@ -18,9 +18,9 @@
   margin: 0;
   padding: 6px 12px;
   text-decoration: none;
-  background: #fafafa;
+  background: #fff;
   color: #aaa;
-  border: solid 1px #ccc;
+  border: solid 1px #aaa;
   border-radius: 13px;
   font-size: 12px;
   text-transform: uppercase;
