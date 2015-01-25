@@ -252,6 +252,10 @@ LevelClass.prototype._toRadius = function(styles) {
 
 
 LevelClass.prototype._getFreeCoordinates = function(count) {
+  if(!count) {
+    return [];
+  }
+
   var snake = this.params.snake;
   var walls = this.params.walls;
   var fruits = this.params.fruits;
@@ -273,7 +277,7 @@ LevelClass.prototype._getFreeCoordinates = function(count) {
 
   var keys = _.keys(allCoords);
   keys = _.shuffle(keys);
-  keys = _.first(keys, count);
+  keys = _.first(keys, count) || [];
 
   return keys.map(function (str) {
     var parts = str.split(',');
