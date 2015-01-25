@@ -51,6 +51,12 @@ Template.level_play.rendered = function () {
     if(direction) {
       self.level.setDirection(direction);
       self.level.tick(playGameLevel);
+
+      // FIXME
+      if(direction.x || direction.y) {
+        GameSounds.step.stop();
+        GameSounds.step.play();
+      }
     } else {
       playGameLevel();
     }

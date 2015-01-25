@@ -87,6 +87,8 @@ LevelClass.prototype.tick = function(callback) {
 
   if((head.pos.x)/gSize >= this.params.size || (head.pos.x)/gSize < 0
     || (head.pos.y)/gSize >= this.params.size || (head.pos.y)/gSize < 0) {
+    GameSounds.hit.stop();
+    GameSounds.hit.play();
     this.onLose('The caterpillar has travelled out of the game universe');
     return;
   }
@@ -95,6 +97,8 @@ LevelClass.prototype.tick = function(callback) {
     var stone = stones[i];
     lost = head.pos.x === stone.pos.x && head.pos.y === stone.pos.y;
     if(lost) {
+      GameSounds.hit.stop();
+      GameSounds.hit.play();
       this.onLose('The caterpillar just hit a stone');
       return;
     }
@@ -104,6 +108,8 @@ LevelClass.prototype.tick = function(callback) {
     var dot = dots[i];
     lost = head.pos.x === dot.pos.x && head.pos.y === dot.pos.y;
     if(lost) {
+      GameSounds.hit.stop();
+      GameSounds.hit.play();
       this.onLose('Ouch! The caterpillar just bit itself');
       return;
     }
@@ -123,6 +129,10 @@ LevelClass.prototype.tick = function(callback) {
       circle.attr(bodyStyles);
       circle.pos = posForNewDot;
       this._caterpillarDots.unshift(circle);
+
+      // FIXME
+      GameSounds.eat.stop();
+      GameSounds.eat.play();
     }
 
     done = done && fruit.consumed;
