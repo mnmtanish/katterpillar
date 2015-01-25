@@ -12,7 +12,7 @@ RulesClass.prototype.getDirection = function() {
   }
 
   this._processNextRule();
-  return null;
+  return {x: 0, y: 0};
 };
 
 

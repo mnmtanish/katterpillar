@@ -19,9 +19,14 @@ Template.level_play.rendered = function () {
   this.level.onLose = showLoseMessage;
   this.level.load(level);
 
-  if(rules.length) {
+  if(rules && rules.length) {
     playGameLevel();
+  } else {
+    showNoRules();
   }
+
+  $(window).on('resize', resize);
+  $(resize);
 
   function playGameLevel () {
     if(self.destroyed) {
@@ -33,20 +38,18 @@ Template.level_play.rendered = function () {
       return;
     }
 
+    self.counter += 1;
+    self.counterDep.changed();
+
     var direction = self.rules.getDirection();
 
     if(direction) {
       self.level.setDirection(direction);
       self.level.tick(playGameLevel);
-      self.counter += 1;
-      self.counterDep.changed();
     } else {
       playGameLevel();
     }
   }
-
-  $(window).on('resize', resize);
-  $(resize);
 };
 
 
@@ -77,7 +80,7 @@ Template.level_play.helpers({
 });
 
 
-function resize (e) {
+function resize () {
   setTimeout(function () {
     var $container = $(window);
     var $svgElement = $('.svg-element');
@@ -90,13 +93,43 @@ function resize (e) {
 }
 
 function showWinMessage () {
-  console.log('Congratulations!');
+  swal({
+    title: 'Congratulations!',
+    text: 'You have successfully completed LEVEL_NAME.',
+    type: 'success',
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes, bring it on!',
+    cancelButtonText: 'No, I\'ll do it later',
+    closeOnConfirm: true,
+    closeOnCancel: true
+  }, function(isConfirm) {
+    if (isConfirm) {
+      console.log('next');
+    }
+  });
 }
 
 function showLoseMessage () {
-  console.log('Please try again!');
+  swal({
+    title: 'Please Try again.',
+    text: 'Please try again. Read the text on rules page for help.',
+    type: 'error'
+  });
 }
 
 function showTimeoutMessage () {
-  console.log('Taking too much time!');
+  swal({
+    title: 'Program Timeout',
+    text: 'The program is taking so much time. Remember, time is counted for both program logic and movements. Try to optimize the program a bit.',
+    type: 'warning'
+  });
+}
+
+function showNoRules () {
+  swal({
+    title: 'No Rules Defined',
+    text: 'Please add some rules to control the snake',
+    type: 'warning'
+  });
 }

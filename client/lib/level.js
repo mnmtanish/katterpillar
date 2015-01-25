@@ -92,9 +92,9 @@ LevelClass.prototype.tick = function(callback) {
   }
 
   if(done) {
-    setTimeout(this.onWin.bind(this), delay + 300);
+    setTimeout(this.onWin.bind(this), delay * 2);
   } else {
-    setTimeout(callback, delay + 300);
+    setTimeout(callback, delay * 2);
   }
 };
 
