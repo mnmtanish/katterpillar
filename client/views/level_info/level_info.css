@@ -1,9 +1,9 @@
 .level-info {
   font-size: 12px;
   line-height: 1.5;
-  border: solid 1px #eee;
-  padding: 10px 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  border-bottom: solid 2px #558B2F;
+  padding-bottom: 20px;
 }
 
 .level-info h1 {
@@ -12,8 +12,8 @@
 
 .level-info code {
   padding: 1px 8px;
-  background: #FAFAFA;
-  border: solid 1px #CCC;
+  background: #C5E1A5;
+  border: solid 1px #558B2F;
   font-size: 12px;
   border-radius: 12px;
   }

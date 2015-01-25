@@ -8,16 +8,16 @@
   border: 1px solid #33691E;
   border-radius: 20px;
   color: #33691E;
-  background: #F1F8E9;
+  background: #C5E1A5;
 }
 
 .rule-snippet-name {
   display: inline-block;
   text-decoration: none;
   padding: 6px 18px;
-  color: #888;
-  background: #fafafa;
-  border: 1px solid #ccc;
+  color: #33691E;
+  background: #9CCC65;
+  border: 2px solid #33691E;
   border-radius: 18px;
   font-size: 12px;
   margin: 5px 0;
@@ -44,8 +44,8 @@
   left: 20px;
   right: 20px;
   bottom: 87px;
-  background: #fff;
-  border: 1px solid #888;
+  background: #C5E1A5;
+  border: 2px solid #33691E;
   padding: 20px;
   overflow-y: scroll;
   z-index: 20;

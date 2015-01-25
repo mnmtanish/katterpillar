@@ -1,11 +1,15 @@
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arials;
   margin: 0;
+  background: #DCEDC8;
+  color: #33691E;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   text-decoration: none;
   outline: none;
+  color: #558B2F;
 }
 
 .page-container {

@@ -4,7 +4,7 @@
   margin: 10px 0;
   padding: 7px 36px;
   border-radius: 24px;
-  border: solid 1px #ccc;
+  border: solid 1px #33691E;
   font-size: 12px;
 }
 
@@ -28,13 +28,13 @@
   top: 6px;
   right: 12px;
   font-size: 12px;
-  color: #ccc;
+  color: #33691E;
   font-weight: normal;
   text-decoration: none;
 }
 
 .rule-code .remove-rule:hover {
-  color: #aaa;
+  color: #33691E;
 }
 
 .rule-code .sort-rule {
@@ -42,18 +42,18 @@
   top: 6px;
   left: 12px;
   font-size: 12px;
-  color: #ccc;
+  color: #689F38;
   font-weight: normal;
   text-decoration: none;
 }
 
 .rule-code .sort-rule:hover {
-  color: #aaa;
+  color: #33691E;
 }
 
 .insert-child-command {
   display: inline-block;
-  color: #aaa;
+  color: #33691E;
   border-bottom: 1px dotted;
   font-size: 12px;
 }

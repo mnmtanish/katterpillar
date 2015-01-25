@@ -7,10 +7,10 @@
   z-index: 10;
   bottom: 0;
   left: 0;
-  border-top: 1px solid #aaa;
-  color: #aaa;
+  border-top: 3px solid #33691E;
+  color: #558B2F;
   box-sizing: border-box;
-  background: #eee;
+  background: #558B2F;
 }
 
 .navigation a {
@@ -18,13 +18,14 @@
   margin: 0;
   padding: 6px 12px;
   text-decoration: none;
-  background: #fff;
-  color: #aaa;
-  border: solid 1px #aaa;
+  background: #9CCC65;
+  color: #33691E;
+  border: 2px solid #33691E;
   border-radius: 13px;
   font-size: 12px;
   text-transform: uppercase;
   line-height: 1;
+  transition: background 0.5s;
 }
 
 .navigation a.left {
@@ -36,11 +37,5 @@
 }
 
 .navigation a:hover {
-  color: #555;
-  border: solid 1px #888;
-}
-
-.navigation a.active {
-  color: #555;
-  border: solid 1px #888;
+  background: #DCEDC8;
 }

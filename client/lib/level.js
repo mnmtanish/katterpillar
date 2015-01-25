@@ -14,7 +14,7 @@ LevelClass = function (target) {
 
 
 LevelClass.prototype._styles = {
-  bg: {fill: '#FCFCFC', stroke: '#EEEEEE', strokeWidth: 4, radius: 0.3},
+  bg: {fill: '#C5E1A5', stroke: '#C5E1A5', strokeWidth: 4, radius: 0.2},
   stone: {fill: '#9E9E9E', stroke: '#212121', strokeWidth: 4, radius: 0.5},
   caterpillar: {fill: '#D7CCC8', stroke: '#3E2723', strokeWidth: 20, radius: 1},
   head: {fill: '#A1887F', stroke: '#3E2723', strokeWidth: 20, radius: 1.15},
