@@ -65,6 +65,14 @@ Template.level_play.helpers({
     Template.instance().counterDep.depend();
     var counter = Template.instance().counter;
     return counter || 0;
+  },
+  levelInfo: function () {
+    var levelName = Session.get('level');
+    var level = Levels.findOne({name: levelName});
+    return level.intro;
+  },
+  goToHomepage: function () {
+    Router.go('/');
   }
 });
 

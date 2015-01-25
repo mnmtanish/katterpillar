@@ -1,7 +1,7 @@
 Levels.insert({
   name: 'tutorial-1',
   size: 12,
-  title: 'Tutorial 1',
+  title: 'Tutorial Level 1',
   walls: [
     {x: 1, y: 1},
     {x: 1, y: 2},
@@ -20,5 +20,11 @@ Levels.insert({
     {x: 2, y: 5},
     {x: 3, y: 5},
     {x: 4, y: 5}
-  ]
+  ],
+  intro: [
+    '# Tutorial Level 1',
+    'Click on the "<i class="fa fa-code"></i>" button in the footer menu to change commands. Click on the "<i class="fa fa-play"></i>" button to test your program.',
+    '',
+    'Add the `moveForward` command to complete this mission.'
+  ].join('\n')
 });

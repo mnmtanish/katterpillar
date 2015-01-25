@@ -1,7 +1,20 @@
 <template name="level_rules">
-  {{#each rules}}
-    {{> level_rule}}
-  {{/each}}
+  {{#if isLevel}}
+    <div class="level-info">
+      {{#markdown}}{{levelInfo}}{{/markdown}}
+    </div>
 
-  {{> level_rule_insert}}
+    <hr>
+
+    <div class="rules-list">
+      <h1>Commands</h1>
+      {{#each rules}}
+        {{> level_rule}}
+      {{/each}}
+    </div>
+
+    {{> level_rule_insert}}
+  {{else}}
+    {{goToHomepage}}
+  {{/if}}
 </template>

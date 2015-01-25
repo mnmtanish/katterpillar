@@ -5,7 +5,7 @@
 
 .step-counter {
   position: absolute;
-  top: 67px;
+  top: 0;
   right: 0px;
   font-size: 11px;
   text-transform: uppercase;

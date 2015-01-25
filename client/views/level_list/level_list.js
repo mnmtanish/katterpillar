@@ -11,6 +11,6 @@ Template.level_list.events({
     Session.set('rules', []);
     Session.set('level', this.name);
     localStorage.setItem('last-level-played', this.name);
-    Router.go('/play');
+    Router.go('/rules');
   }
 });

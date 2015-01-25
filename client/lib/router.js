@@ -12,9 +12,9 @@ Router.route('/levels', function () {
 });
 
 Router.route('/play', function () {
-  this.render('level_play', {name: this.params.name});
+  this.render('level_play');
 });
 
 Router.route('/rules', function () {
-  this.render('level_rules', {name: this.params.name});
+  this.render('level_rules');
 });
