@@ -7,6 +7,10 @@ Router.route('/', function () {
   this.render('homepage');
 });
 
+Router.route('/end', function () {
+  this.render('completed');
+});
+
 Router.route('/levels', function () {
   this.render('level_list');
 });

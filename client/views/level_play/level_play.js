@@ -105,9 +105,18 @@ function resize () {
 }
 
 function showWinMessage () {
+  var levelName = CurrentLevel.get();
+  var level = Levels.findOne({name: levelName});
+  var next = Levels.findOne({order: level.order + 1});
+
+  if(!next) {
+    showWinMessageFinal();
+    return;
+  }
+
   swal({
-    title: 'Congratulations!',
-    text: 'You have successfully completed LEVEL_NAME.',
+    title: 'Awesome!',
+    text: 'You have finished "'+level.name+'".',
     type: 'success',
     showCancelButton: true,
     confirmButtonColor: '#DD6B55',
@@ -117,8 +126,25 @@ function showWinMessage () {
     closeOnCancel: true
   }, function(isConfirm) {
     if (isConfirm) {
-      console.log('next');
+      CurrentRules.set([]);
+      CurrentLevel.set(next.name);
+      localStorage.setItem('last-level-played', next.name);
+      Router.go('/rules');
     }
+  });
+}
+
+function showWinMessageFinal () {
+  swal({
+    title: 'Congratulations!',
+    text: 'You have successfully completed the game.',
+    type: 'success',
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'More Levels',
+    closeOnConfirm: true,
+    closeOnCancel: true
+  }, function() {
+    Router.go('/end');
   });
 }
 
