@@ -11,15 +11,23 @@ Commands.supportsChildren = function (key) {
 Commands.groups = [
   {
     type: 'Snake',
+    desc: 'Commands to move the snake.',
     rules: ['snake_moveForward', 'snake_turnLeft', 'snake_turnRight']
   },
   {
     type: 'Loops',
+    desc: 'Perform actions multiple times',
     rules: ['loop_repeat']
   },
   {
     type: 'Conditions',
+    desc: 'Perform commands if conditions are met. <strong>! work in progress</strong>',
     rules: ['condition_if', 'condition_unless']
+  },
+  {
+    type: 'User Functions',
+    desc: 'A set of commands saved by the user. A good place to store some frequently used functions. <a href="/funcs">add functions</a>',
+    rules: []
   },
 ];
 
